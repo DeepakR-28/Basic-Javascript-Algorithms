@@ -22,3 +22,15 @@ function merge(arr1, arr2){
   }
   return result
 }
+
+
+function mergeSort(arr){
+  if(arr.length<=1) return arr
+  var mid = Math.round(arr.length/2)
+  var left = mergeSort(arr.slice(0,mid))
+  var right = mergeSort(arr.slice(mid))
+  return merge(left,right)
+
+}
+
+console.log(mergeSort([5,4,3,2,1]))
