@@ -1,3 +1,4 @@
+ /*
  class Node{
    constructor(val){
      this.val = val
@@ -144,4 +145,75 @@ console.log(`Initial LinkedList`)
 console.log(list)
 list.reverse()
 console.log(`Reverserd LinkedList\n ${this}` )
+console.log(list)
+*/
+
+
+
+class Node{
+  constructor(val){
+    this.val = val
+    this.next = null
+  }
+}
+
+class LinkedList{
+  constructor(){
+    this.length = null
+    this.head = null
+    this.tail = null
+  }
+
+  push(val){
+    let newNode = new Node(val)
+    if(!this.head){
+      this.head = newNode
+      this.tail = newNode
+    }
+    else{
+      this.tail.next = newNode
+      this.tail = newNode
+    }
+    this.length++
+  }
+
+  pop(){
+    if(!this.head) return "List empty cannot pop"
+    else{
+      let prev = this.head
+      let curr = this.head.next
+      while(curr.next != null){
+        prev = curr
+        curr = curr.next
+      }
+      prev.next = null
+      this.tail = prev
+      this.length--
+    }
+  }
+  shift(){
+    if(!this.head) return "Nothing in the list"
+    else{
+      let curr = this.head.next
+      this.head.next == null
+      this.head = curr
+      this.length--
+    }
+  }
+  unshift(val){
+   let newNode = new Node(val)
+   let curr_head = this.head
+   this.head = newNode
+   newNode.next = curr_head
+   this.length++
+  }
+}
+
+
+let list = new LinkedList
+list.push(10)
+list.push(20)
+list.push(30)
+list.push(40)
+list.unshift(5)
 console.log(list)
