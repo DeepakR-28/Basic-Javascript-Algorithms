@@ -95,55 +95,19 @@ class BST{
           if(parent.left){
             queue.push(parent.left)
           }
-          if(parent.right){
+          else if(parent.right){
             queue.push(parent.right)
           }
         }
         return visited
       }
     }
-    dfsPreorder(){
-      var visited = []
-      var current = this.root //starting node
-      function traverse(node){
-        visited.push(node.value)
-        if(node.left) traverse(node.left)
-        if(node.right) traverse(node.right)
-      }
-      traverse(current);
-      return visited
-    }
-    dfsPostorder(){
-      var visited = []
-      var current = this.root
-      function traverse(node){
-        if(node.left) traverse(node.left)
-        if(node.right) traverse(node.right)
-        visited.push(node.value)
-      }
-      traverse(current)
-      return visited
-    }
-    dfsInorder(){
-      var visited = []
-      var current = this.root
-      function traverse(node){
-        if(node.left) traverse(node.left)
-        visited.push(node.value)
-        if(node.right) traverse(node.right)
-      }
-      traverse(current)
-      return visited
-    } 
   }
 
 var tree = new BST()
 tree.insert(10)
-tree.insert(6)
-tree.insert(15)
-tree.insert(3)
-tree.insert(8)
 tree.insert(20)
-console.log(`Preorder traversal : ${tree.dfsPreorder()}`)
-console.log(`Postorder traveral : ${tree.dfsPostorder()}`)
-console.log(`Inorder traversal : ${tree.dfsInorder()}`)
+tree.insert(30)
+tree.insert(3)
+console.log(tree.find(3))
+console.log(tree.bfs())
